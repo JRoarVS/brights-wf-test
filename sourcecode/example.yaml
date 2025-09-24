@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: privileged
+spec:
+  containers:
+  - image: nginx:latest
+    name: demo-pod
+    securityContext:
+      privileged: true
+      runAsUser: 0
+      allowPrivilegeEscalation: true
+      readOnlyRootFilesystem: false
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
